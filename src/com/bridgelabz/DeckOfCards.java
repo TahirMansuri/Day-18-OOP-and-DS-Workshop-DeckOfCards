@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class DeckOfCards {
 
@@ -10,9 +11,8 @@ public class DeckOfCards {
         //Welcome Message for User
         System.out.println("Welcome to Deck of Cards Problem");
 
-        DeckOfCards player = new DeckOfCards();
-        player.allotCards();
-        player.print();
+        Player player = new Player();
+        player.addPlayers();
     }
 
     public void allotCards() {
@@ -40,6 +40,24 @@ public class DeckOfCards {
                 if(cards[suit][rank] == 1) {
                     System.out.println( suit + " " + rank );
                 }
+            }
+        }
+    }
+}
+class Player {
+    Scanner sc = new Scanner(System.in);
+    Player[] players;
+    public void addPlayers() {
+        System.out.println("Enter the Number of Players : ");
+        int playerCount = sc.nextInt();
+        if(playerCount > 4 || playerCount < 2) {
+            System.out.println("Please Enter the Minimum 2 or Maximum 4 Players only.");
+            addPlayers();
+        } else {
+            players = new Player[playerCount];
+
+            for (int i = 0; i < playerCount; i++) {
+                players[i] = new Player();
             }
         }
     }
